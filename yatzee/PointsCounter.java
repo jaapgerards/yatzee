@@ -163,7 +163,7 @@ public class PointsCounter {
     private Sets getInput() {
 
         String s = "\n";
-        int i = 0;
+        int i = 1;
         for (Sets set : Sets.values()) {
             s += i;
             s += "\t" + set + "\n";
@@ -173,12 +173,17 @@ public class PointsCounter {
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            if (scanner.hasNextInt() == false){
+                scanner.nextLine();
+                System.out.println("Please give a valid number from 1 - " + (Sets.values().length) + " --> ");
+                continue;
+            }
             int input = scanner.nextInt();
             scanner.nextLine();
-            if ((input >= 0) && (input < Sets.values().length) && (scoreBoard.get(Sets.values()[input])) == 0) {
-                return Sets.values()[input];
+            if ((input >= 1) && (input <= Sets.values().length) && (scoreBoard.get(Sets.values()[input - 1])) == 0) {
+                return Sets.values()[input - 1];
             }
-            System.out.println("INVALID INPUT");
+            System.out.println("Please give a valid number from 1 - " + (Sets.values().length) + " --> ");
         }
     }
 

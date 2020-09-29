@@ -17,11 +17,12 @@ public class App {
             if (input.equals("Q")) {
                 quit = true;
                 continue;
-            }else if(input.equals("S")) {
+            } else if (input.equals("S")) {
                 System.out.println(yg.getPointsCounter().toString());
                 continue;
+            } else if (input.equals("P")) {
+                yg.playYatzeePlay();
             }
-            yg.playYatzeePlay();
         }
     }
 }

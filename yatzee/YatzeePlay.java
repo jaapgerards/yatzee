@@ -29,7 +29,7 @@ public class YatzeePlay {
                 dices[i].throwDice();
             }
         }
-        String output = "\nThrown dices (number): \t1\t2\t3\t4\t5\nThrown dices (value): \t";
+        String output = "\nTHROW NUMBER " + numberOfThrows + "\n\nThrown dices (number): \t1\t2\t3\t4\t5\nThrown dices (value): \t";
         for (Dice dice : dices) {
             output += dice.getNumber() + "\t";
         }
@@ -43,12 +43,24 @@ public class YatzeePlay {
     public void keepDices() {
         System.out.println("\nType the number(s) of the dice(s) that you want to keep:\n");
         Scanner input = new Scanner(System.in);
-        int dicesToKeep = input.nextInt();
-        input.nextLine();
-        while (dicesToKeep >= 1) {
-            int numberToKeep = (dicesToKeep % 10) - 1;
-            dicesToKeep /= 10;
-            this.keepArray[numberToKeep] = 1;
+        while (true) {
+            if (input.hasNextInt() == false) {
+                input.nextLine();
+                System.out.println("Please give a valid number: ");
+                continue;
+            }
+            int dicesToKeep = input.nextInt();
+            input.nextLine();
+            while (dicesToKeep >= 1) {
+                int numberToKeep = (dicesToKeep % 10) - 1;
+                dicesToKeep /= 10;
+                if (numberToKeep + 1 <= 5 && numberToKeep + 1 > 0) {
+                    this.keepArray[numberToKeep] = 1;
+                }else if(numberToKeep + 1 > 5 || numberToKeep + 1 <= 0) {
+                    System.out.println("Number " + (numberToKeep + 1) + " was not saved, since it was an invalid input.");
+                }
+            }
+            break;
         }
     }
 
