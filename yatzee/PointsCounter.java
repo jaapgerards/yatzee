@@ -1,17 +1,16 @@
 package yatzee;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 enum Sets {
-    ONES, TWOS, THREES, FOURS, FIVES, SIXES, YATZEE, FOUR_OF_A_KIND, THREE_OF_A_KIND, FULL_HOUSE, GROTE_STRAAT, KLEINE_STRAAT, FREE_CHOICE;
+    ONES, TWOS, THREES, FOURS, FIVES, SIXES, YATZEE, FOUR_OF_A_KIND, THREE_OF_A_KIND, FULL_HOUSE, GROTE_STRAAT, KLEINE_STRAAT, FREE_CHOICE
 }
 
 public class PointsCounter {
 
-    private Map<Sets, Integer> scoreBoard = new LinkedHashMap<>();
+    private final Map<Sets, Integer> scoreBoard = new LinkedHashMap<>();
     {
         for (Sets set : Sets.values()){
             scoreBoard.put(set, 0);
@@ -173,17 +172,14 @@ public class PointsCounter {
         System.out.println(s + "\nGive the number of the place where you want to count the points...");
 
         Scanner scanner = new Scanner(System.in);
-        boolean quit = false;
-        while (!quit) {
+        while (true) {
             int input = scanner.nextInt();
             scanner.nextLine();
             if ((input >= 0) && (input < Sets.values().length) && (scoreBoard.get(Sets.values()[input])) == 0) {
-                quit = true;
                 return Sets.values()[input];
             }
             System.out.println("INVALID INPUT");
         }
-        return null;
     }
 
     @Override
@@ -196,3 +192,4 @@ public class PointsCounter {
         return s;
     }
 }
+
