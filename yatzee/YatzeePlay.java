@@ -7,7 +7,7 @@ public class YatzeePlay {
     private int numberOfThrows = 0;
     private Dice[] dices = new Dice[5];
     private byte[] keepArray = {0, 0, 0, 0, 0};
-    private int points;
+    private int pointsAfterPlay;
 
     {
         for (int i = 0; i < 5; i++) {
@@ -18,7 +18,7 @@ public class YatzeePlay {
 
     public void play() {
         while (numberOfThrows < 3) {
-            numberOfThrows ++;
+            numberOfThrows++;
             throwDices();
         }
     }
@@ -64,11 +64,11 @@ public class YatzeePlay {
         return keepArray;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
+    public void setPointsAfterPlay(int pointsAfterPlay) {
+        this.pointsAfterPlay = pointsAfterPlay;
     }
 
-    public int getPoints() {
-        return points;
+    public int getPointsAfterPlay() {
+        return pointsAfterPlay;
     }
 }

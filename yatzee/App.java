@@ -12,9 +12,13 @@ public class App {
         boolean quit = false;
         Scanner scanner = new Scanner(System.in);
         while (quit == false) {
-            System.out.println("\nType 'Q' to quit. Type 'P' to play!\nSum of points at this moment: " + yg.getTotalPoints() + "\n");
-            if (scanner.nextLine().equals("Q")) {
+            System.out.println("\nType 'Q' to quit. Type 'P' to play. Type 'S' to see the scoreboard!\n");
+            String input = scanner.nextLine().toUpperCase();
+            if (input.equals("Q")) {
                 quit = true;
+                continue;
+            }else if(input.equals("S")) {
+                System.out.println(yg.getPointsCounter().toString());
                 continue;
             }
             yg.playYatzeePlay();
